@@ -43,20 +43,15 @@ public class LKSummonerAPI: LKAPIProtocol {
                             self.delegate?.summonerAPI?(didRetrieveSummonerData: data)
                         } else {
                             //  no data
-                            self.delegate?.summonerAPI?(failedRetrieveSummoerDataReturns: LKAPIError.NotFound.ToNSError(["Error" : "Summoner Not Found"]))
+                            self.delegate?.summonerAPI?(failedRetrieveSummoerDataReturns: LKAPIError.NotFound)
                         }
                     } else {
-                        if let apiError = LKAPIError(rawValue: statusCode)?.ToNSError(["Error" : "Summoner Not Found"]) {
-                            //  apiError
-                            self.delegate?.summonerAPI?(failedRetrieveSummoerDataReturns: apiError)
-                        } else {
-                            //  unknow apiError
-                            self.delegate?.summonerAPI?(failedRetrieveSummoerDataReturns: LKAPIError.Unknown.ToNSError())
-                        }
+                        //  error response code
+                        self.delegate?.summonerAPI?(failedRetrieveSummoerDataReturns: LKAPIError.FromCode(statusCode))
                     }
                 } else {
                     //  no response
-                    self.delegate?.summonerAPI?(failedRetrieveSummoerDataReturns: LKAPIError.NoResponse.ToNSError())
+                    self.delegate?.summonerAPI?(failedRetrieveSummoerDataReturns: LKAPIError.NoResponse)
                 }
             }
         }).resume()

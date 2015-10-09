@@ -100,10 +100,10 @@
                                 </connections>
                             </tableView>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HKS-qC-n91">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unranked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDe-Bn-RaF">
-                                        <rect key="frame" x="8" y="571" width="74.5" height="21"/>
+                                        <rect key="frame" x="8" y="20" width="74.5" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="UiR-AM-1NS"/>
                                         </constraints>
@@ -114,9 +114,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="RDe-Bn-RaF" firstAttribute="leading" secondItem="HKS-qC-n91" secondAttribute="leading" constant="8" id="HjY-oK-ZN8"/>
-                                    <constraint firstAttribute="bottom" secondItem="RDe-Bn-RaF" secondAttribute="bottom" constant="8" id="Pgs-TP-DTA"/>
+                                    <constraint firstAttribute="bottom" secondItem="RDe-Bn-RaF" secondAttribute="bottom" constant="8" id="Isd-Qt-wJA"/>
+                                    <constraint firstItem="RDe-Bn-RaF" firstAttribute="leading" secondItem="HKS-qC-n91" secondAttribute="leading" constant="8" id="kMW-W4-ytb"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Isd-Qt-wJA"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unranked.png" translatesAutoresizingMaskIntoConstraints="NO" id="YZW-gy-Jvl">
                                 <rect key="frame" x="204" y="204" width="192" height="192"/>
@@ -128,29 +133,37 @@
                         </subviews>
                         <color key="backgroundColor" red="0.13725490196078433" green="0.43529411764705883" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="HKS-qC-n91" firstAttribute="width" secondItem="d2Y-Gs-5VM" secondAttribute="width" id="6nF-Wt-UbE"/>
                             <constraint firstItem="QLO-QZ-NSm" firstAttribute="top" secondItem="1oQ-f8-fxD" secondAttribute="bottom" id="7R9-xN-o6Q"/>
                             <constraint firstItem="YZW-gy-Jvl" firstAttribute="centerX" secondItem="d2Y-Gs-5VM" secondAttribute="centerX" id="8Zp-Re-wyq"/>
-                            <constraint firstItem="HKS-qC-n91" firstAttribute="centerX" secondItem="d2Y-Gs-5VM" secondAttribute="centerX" id="AWI-p1-Wxt"/>
                             <constraint firstItem="YZW-gy-Jvl" firstAttribute="centerY" secondItem="d2Y-Gs-5VM" secondAttribute="centerY" id="Db4-d0-13v"/>
                             <constraint firstItem="7Vl-Kv-WTe" firstAttribute="centerX" secondItem="d2Y-Gs-5VM" secondAttribute="centerX" id="DyH-1I-F4V"/>
                             <constraint firstItem="1oQ-f8-fxD" firstAttribute="centerY" secondItem="d2Y-Gs-5VM" secondAttribute="centerY" id="Jbk-1Q-D59"/>
+                            <constraint firstItem="RDe-Bn-RaF" firstAttribute="top" secondItem="kgJ-Z2-qc2" secondAttribute="bottom" id="TBJ-uz-HcP"/>
                             <constraint firstItem="7Vl-Kv-WTe" firstAttribute="top" secondItem="kgJ-Z2-qc2" secondAttribute="bottom" id="VhI-Q1-pD4"/>
                             <constraint firstItem="7Vl-Kv-WTe" firstAttribute="width" secondItem="d2Y-Gs-5VM" secondAttribute="width" id="X0L-mf-Vxm"/>
                             <constraint firstItem="1oQ-f8-fxD" firstAttribute="centerX" secondItem="d2Y-Gs-5VM" secondAttribute="centerX" id="cMl-Dc-JBo"/>
-                            <constraint firstItem="HKS-qC-n91" firstAttribute="centerY" secondItem="d2Y-Gs-5VM" secondAttribute="centerY" id="cSO-Bm-Lg5"/>
+                            <constraint firstItem="kgJ-Z2-qc2" firstAttribute="bottom" secondItem="HKS-qC-n91" secondAttribute="top" id="ft3-nd-lKf"/>
                             <constraint firstItem="8xL-18-ykG" firstAttribute="top" secondItem="QLO-QZ-NSm" secondAttribute="bottom" constant="8" id="gxb-d6-h38"/>
+                            <constraint firstItem="HKS-qC-n91" firstAttribute="centerX" secondItem="d2Y-Gs-5VM" secondAttribute="centerX" id="hbQ-Lb-1K6"/>
+                            <constraint firstItem="8xL-18-ykG" firstAttribute="top" secondItem="HKS-qC-n91" secondAttribute="bottom" id="hl1-dz-lAQ"/>
                             <constraint firstItem="9Ld-rF-xT6" firstAttribute="top" secondItem="kgJ-Z2-qc2" secondAttribute="bottom" constant="8" id="hqd-O9-uiI"/>
-                            <constraint firstItem="HKS-qC-n91" firstAttribute="height" secondItem="d2Y-Gs-5VM" secondAttribute="height" id="koO-bq-z5E"/>
+                            <constraint firstItem="HKS-qC-n91" firstAttribute="top" secondItem="d2Y-Gs-5VM" secondAttribute="top" id="mTZ-Mv-pFW"/>
                             <constraint firstItem="9Ld-rF-xT6" firstAttribute="centerX" secondItem="d2Y-Gs-5VM" secondAttribute="centerX" id="qbW-NI-bsB"/>
-                            <constraint firstItem="HKS-qC-n91" firstAttribute="width" secondItem="d2Y-Gs-5VM" secondAttribute="width" id="tWF-gB-n6O"/>
                             <constraint firstItem="1oQ-f8-fxD" firstAttribute="top" secondItem="9Ld-rF-xT6" secondAttribute="bottom" constant="8" id="v7d-bX-ic9"/>
                             <constraint firstItem="QLO-QZ-NSm" firstAttribute="centerX" secondItem="d2Y-Gs-5VM" secondAttribute="centerX" id="vhv-ff-J0Y"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ft3-nd-lKf"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Summoner" image="searchIcon.png" id="eCF-HI-R96"/>
                     <connections>
                         <outlet property="maskView" destination="HKS-qC-n91" id="6sB-aL-ELY"/>
                         <outlet property="rankImageView" destination="YZW-gy-Jvl" id="Ayq-Yq-io5"/>
+                        <outlet property="rankLabel" destination="RDe-Bn-RaF" id="4dG-FM-eIp"/>
                         <outlet property="searchBar" destination="1oQ-f8-fxD" id="CQK-Fu-of7"/>
                         <outlet property="searchHistoryTableView" destination="QLO-QZ-NSm" id="vib-rY-aek"/>
                         <outlet property="searchProgressBar" destination="7Vl-Kv-WTe" id="ZOa-vk-Eo9"/>
@@ -182,7 +195,7 @@
     <resources>
         <image name="friendsIcon.png" width="25" height="25"/>
         <image name="logo.png" width="550" height="399"/>
-        <image name="searchIcon.png" width="50" height="50"/>
+        <image name="searchIcon.png" width="25" height="25"/>
         <image name="unranked.png" width="192" height="192"/>
     </resources>
 </document>

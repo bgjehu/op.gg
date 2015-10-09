@@ -25,6 +25,9 @@ public class LKSummoner: NSObject {
     public var summonerLevel : Int { get {return _summonerLevel}}
     private var _rank = LKRank()
     public var rank : LKRank { get {return _rank}}
+    public func setRank(rank : LKRank) {
+        _rank = rank
+    }
     private var _teamRank = LKRank()
     public var teamRank : LKRank { get {return _teamRank}}
     public var highestRank : LKRank { get {return _rank.value >= teamRank.value ? _rank : _teamRank}}

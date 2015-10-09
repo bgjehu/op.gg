@@ -32,6 +32,7 @@ class SearchHistory: NSObject {
             _searchEntries.removeFirst()
         }
         _searchEntries.append(searchEntry)
+        store()
     }
     
     func remove(searchEntry : String) {

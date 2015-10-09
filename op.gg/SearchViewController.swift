@@ -11,6 +11,7 @@ import UIKit
 class SearchViewController: UIViewController, UISearchBarDelegate, LKSummonerAPIDelegate, LKLeagueAPIDelegate, UITableViewDataSource, UITableViewDelegate {
 
     
+    @IBOutlet var rankLabel: UILabel!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var maskView: UIView!
     @IBOutlet var rankImageView: UIImageView!
@@ -54,14 +55,44 @@ class SearchViewController: UIViewController, UISearchBarDelegate, LKSummonerAPI
         }
     }
     
+    func summonerAPI(failedRetrieveSummoerDataReturns error: NSError) {
+        print(error)
+        //  UI response on main thread
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
     func leagueAPI(didRetrieveSummonerLeagueData data: NSData) {
         if let summoner = searchingSummoner {
+            //  UI response on main thread
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 summoner.importLeagueData(data)
                 self.showRank(summoner.rank)
                 SearchHistory.sharedHistory.add(summoner.name)
                 self.searchHistoryTableView.reloadData()
             })
+        }
+    }
+    
+    func leagueAPI(failedRetrieveSummonerLeagueDataReturns error: NSError) {
+        if let summoner = searchingSummoner {
+            summoner.setRank(LKRank())
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.showRank(summoner.rank)
+                SearchHistory.sharedHistory.add(summoner.name)
+                self.searchHistoryTableView.reloadData()
+            })
+        } else {
+            print(error)
+            //  UI response on main thread
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
         }
     }
     
@@ -72,6 +103,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, LKSummonerAPI
     
     func showRank(rank : LKRank) {
         searchBar.resignFirstResponder()
+        self.rankLabel.text = rank.stringValue
         self.rankImageView.image = UIImage(named: rank.stringValue)
         self.rankImageView.hidden = false
         self.maskView.hidden = false

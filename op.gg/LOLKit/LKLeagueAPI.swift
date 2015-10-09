@@ -42,20 +42,15 @@ public class LKLeagueAPI: LKAPIProtocol {
                             self.delegate?.leagueAPI?(didRetrieveSummonerLeagueData: data)
                         } else {
                             //  no data
-                            self.delegate?.leagueAPI?(failedRetrieveSummonerLeagueDataReturns: LKAPIError.NotFound.ToNSError(["Error" : "Summoner Not Found"]))
+                            self.delegate?.leagueAPI?(failedRetrieveSummonerLeagueDataReturns: LKAPIError.NotFound)
                         }
                     } else {
-                        if let apiError = LKAPIError(rawValue: statusCode)?.ToNSError(["Error" : "Summoner Not Found"]) {
-                            //  apiError
-                            self.delegate?.leagueAPI?(failedRetrieveSummonerLeagueDataReturns: apiError)
-                        } else {
-                            //  unknow apiError
-                            self.delegate?.leagueAPI?(failedRetrieveSummonerLeagueDataReturns: LKAPIError.Unknown.ToNSError())
-                        }
+                        //  error status code
+                        self.delegate?.leagueAPI?(failedRetrieveSummonerLeagueDataReturns: LKAPIError.FromCode(statusCode))
                     }
                 } else {
                     //  no response
-                    self.delegate?.leagueAPI?(failedRetrieveSummonerLeagueDataReturns: LKAPIError.NoResponse.ToNSError())
+                    self.delegate?.leagueAPI?(failedRetrieveSummonerLeagueDataReturns: LKAPIError.NoResponse)
                 }
             }
         }).resume()
